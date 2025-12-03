@@ -166,7 +166,7 @@ def test_on_breast_cancer_dataset():
 
     print("\n--- PORÓWNANIE DLA ZBIORU BREAST CANCER ---")
 
-    # 1. Nasza implementacja
+    # 1. nasza implementacja
     start_time_custom = time.time()
     custom_kmeans = CustomKMeans(n_clusters=2, random_state=42)
     custom_labels_raw = custom_kmeans.fit_predict(X_scaled)
@@ -182,8 +182,8 @@ def test_on_breast_cancer_dataset():
     print(f"[Custom] Błędy: {custom_errors} / {len(y_true)}")
     print(f"[Custom] Dokładność: {custom_accuracy:.4f}")
 
-    # 2. Implementacja biblioteczna (scikit-learn)
-    # Używamy n_init=10 (domyślne), aby porównać z pełną, zoptymalizowaną wersją
+    # 2. implementacja biblioteczna (scikit-learn)
+    # używamy n_init=10 (domyślne), aby porównać z pełną, zoptymalizowaną wersją
     start_time_sklearn = time.time()
     sklearn_kmeans = SKLearnKMeans(n_clusters=2, random_state=42, n_init="auto")
     sklearn_labels_raw = sklearn_kmeans.fit_predict(X_scaled)
@@ -199,11 +199,11 @@ def test_on_breast_cancer_dataset():
     print(f"[SKLearn] Błędy: {sklearn_errors} / {len(y_true)}")
     print(f"[SKLearn] Dokładność: {sklearn_accuracy:.4f}")
 
-    # Porównanie
+    # porównanie
     print(f"\nRóżnica czasu (SKLearn - Custom): {sklearn_time - custom_time:.6f} s")
     print(f"Różnica dokładności (SKLearn - Custom): {sklearn_accuracy - custom_accuracy:.4f}")
 
-    # Asercja dla naszej implementacji
+    # asercja dla naszej implementacji
     assert custom_accuracy > 0.85, f"Zbyt niska dokładność Custom: {custom_accuracy}"
 
 
@@ -218,7 +218,7 @@ def test_on_digits_dataset():
 
     print("\n--- PORÓWNANIE DLA ZBIORU DIGITS ---")
 
-    # 1. Nasza implementacja
+    # 1. nasza implementacja
     start_time_custom = time.time()
     custom_kmeans = CustomKMeans(n_clusters=10, random_state=42)
     custom_labels_raw = custom_kmeans.fit_predict(X_scaled)
@@ -234,7 +234,7 @@ def test_on_digits_dataset():
     print(f"[Custom] Błędy: {custom_errors} / {len(y_true)}")
     print(f"[Custom] Dokładność: {custom_accuracy:.4f}")
 
-    # 2. Implementacja biblioteczna (scikit-learn)
+    # 2. implementacja biblioteczna (scikit-learn)
     start_time_sklearn = time.time()
     sklearn_kmeans = SKLearnKMeans(n_clusters=10, random_state=42, n_init="auto")
     sklearn_labels_raw = sklearn_kmeans.fit_predict(X_scaled)
@@ -250,9 +250,9 @@ def test_on_digits_dataset():
     print(f"[SKLearn] Błędy: {sklearn_errors} / {len(y_true)}")
     print(f"[SKLearn] Dokładność: {sklearn_accuracy:.4f}")
 
-    # Porównanie
+    # porównanie
     print(f"\nRóżnica czasu (SKLearn - Custom): {sklearn_time - custom_time:.6f} s")
     print(f"Różnica dokładności (SKLearn - Custom): {sklearn_accuracy - custom_accuracy:.4f}")
 
-    # Asercja dla naszej implementacji
+    # asercja dla naszej implementacji
     assert custom_accuracy > 0.50, f"Zbyt niska dokładność Custom: {custom_accuracy}"
