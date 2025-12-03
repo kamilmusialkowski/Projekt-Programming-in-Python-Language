@@ -36,7 +36,7 @@ class CustomKMeans:
         # obliczanie nowych centroidów jako średniej z przypisanych próbek
         new_centroids = np.zeros(self.centroids.shape)
         for k in range(self.n_clusters):
-            # Próbki należące do k-tego klastra
+            # próbki należące do k-tego klastra
             cluster_points = X[cluster_assignments == k]
             if len(cluster_points) > 0:
                 new_centroids[k] = cluster_points.mean(axis=0)
